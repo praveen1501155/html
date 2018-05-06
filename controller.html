@@ -1,60 +1,21 @@
-﻿<!DOCTYPE html>
-<html ng-app="myapp">
+<html>
+<head>
 <script src="angular.min.js"></script>
+
 <script>
-<body>
+ angular.module("mod",[]).controller("con1",function($scope){
+$scope.name= "karthi";
+$scope.message= "welcome";
+});
+</script>
+</head>
+<body ng-app="mod" style="background-image:url('m_10.jpg')">
+<div ng-controller="con1">
+name: <input type="text" ng-model="name"><br><br>
+lastname: <input type="text" ng-model="name1"><br><br>
 
-<form name="form1">
-
-
-<p id="display"></p>
-<center><b><u>REGISTRATION FORM</u></b></center>
-<br><br>
-<div>
-  First name:
-  <input type="text" name="firstname">
-  <br>
-  address:
-<textarea name="message" rows="3" cols="15"></textarea><br><br>
-gender:
-<input type="radio" name="gender" value="male" checked> Male
-  <input type="radio" name="gender" value="female"> Female
-  <input type="radio" name="gender" value="other"> Other  
- <br>
-department:
-<input type="checkbox" class="chkbox" name="department" value="cse">cse
-
-<input type="checkbox" class="chkbox" name="department" value="it">it 
-
-<input type="checkbox" class="chkbox" name="department" value="ece">ece 
-<input type="checkbox" class="chkbox" name="department" value="mech">mech 
-<br><br>
- 
-
-select course:<select name="course">
-    <option value="ap">ap</option>
-    <option value="ms">ms</option>
-    <option value="bd">bd</option>
-    </select>
-<br><br><br><br>
-
-select country:<select name="country" multiple>
-    <option value="ind">ind</option>
-    <option value="pak">pak</option>
-    <option value="sri">sri</option>
-    <option value="aus">aus</option>
-    <option value="eng">eng</option>
-    <option value="can">can</option>
-    </select>
-<br><br><br>
-
-  <br><br>
+<p>hello {{name}} {{message}} {{name1}} </p>
 </div>
-<center> <button ng-click="toggle()">submit</button></center>
-
-</form>
-<br><br>
-
-
 </body>
+</
 </html>

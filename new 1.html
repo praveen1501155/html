@@ -1,0 +1,45 @@
+<html>
+<script src="angular.min.js"></script>
+<body ng-app="myApp">
+<style>
+</style>
+<div  ng-controller="myCtrl" ng-show="login">
+<form>
+   <div class="tab">
+      <label for="uname"><b>Username</b></label>
+      <input ng-model="username" placeholder="Enter Username" required>
+<br>
+<br>
+      <label for="psw"><b>Password</b></label>
+      <input ng-model="psw" placeholder="Enter Password" required>
+<br>
+<br>    
+    <button ng-click="submit()">Login</button>
+</div>
+</form>
+</div>
+<form>
+<div id="s" ng-controller="myctrl2" ng-show="home" class="tabcontent">
+<p>Successfully login</p>
+{{message}}
+</div>
+</form>
+<script>
+angular.module('myApp',[]).controller('myCtrl',function($scope,$rootScope){
+$scope.username='';
+$scope.psw='';
+$scope.login=true;
+$rootScope.home=false;
+$scope.submit=function(){
+	if($scope.username == "admin" && $scope.psw == "123"){
+		$scope.login=false;
+		$rootScope.home=true;
+		$rootScope.message = "logged in"
+	}
+}
+});
+angular.module('myApp').controller('myctrl2',function($scope){
+});
+</script>
+</body>
+</html>

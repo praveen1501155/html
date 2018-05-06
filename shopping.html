@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.min.js"></script>
+<script>
+var app = angular.module("myModule", [])
+	.controller("myController", function($scope){
+	$scope.carts=[];
+	$scope.products = [
+	{p_id: "1", p_name: "Dumbells",p_price:420},
+	{p_id: "2", p_name: "ResistanceBands",p_price:120},
+	{p_id: "3", p_name: "YogaMat",p_price:300},
+	{p_id: "4", p_name: "Kettlebel",p_price:350},
+	{p_id: "5", p_name: "JumpRope",p_price:200},
+	{p_id: "6", p_name: "FoamRoller",p_price:600}
+	]; 
+ 
+	$scope.add_cart = function(product){ 
+		if(product){
+		$scope.carts.push({p_id: product.p_id, p_name: product.p_name, p_price: product.p_price}); 
+		}	
+	}
+ 
+ 
+	$scope.total = 0; 
+    $scope.setTotals = function(cart){ 
+		if(cart){ 
+			$scope.total += cart.p_price; 
+				}
+	}
+ 
+	$scope.remove_cart = function(cart){ 
+		if(cart){ 
+			$scope.carts.splice($scope.carts.indexOf(cart), 1);  
+			$scope.total -= cart.p_price; 
+			}
+	}
+	});
+</script>
+<head>
+<meta charset = "UTF-8" name = "viewport" content = "width=device-width, initial-scale=1" />
+<style>
+	body{
+		 background-image:url("1.jpg");
+		 background-size:cover;
+		 }
+	.table{
+		background-color:gray;
+		border:1px solid white;
+		text-align:left;
+		padding:20px;
+		}
+	h5{
+		color:white;
+		font-size:150%;
+		text-align:center;
+		}
+	.b{
+		height:auto;
+		width:30%;
+		text-align:center;
+		color:white;
+		float:left;
+		padding-bottom:40px;
+		}
+    .l{
+		text-align:center;
+		}
+</style>
+</head>
+<body> 
+    <div style="height:60px;width:100%;text-align:center;background-color:gray;color:white;float:left;">
+	<h2>FITNESS e-STORE</h2> 
+	</div>
+	<div class = "b" ng-app = "myModule" ng-controller = "myController">
+	<h5>SHOPPING CART</h5>
+	<div id="product">
+    <table class="table">
+		<thead>
+		<tr><th>PRODUCT</th>
+		<th>PRICE</th>
+		<th>ADDITEMS</th></tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat = "product in products ">
+		<td>{{product.p_name}}</td>
+		<td class="l">Rs.{{product.p_price}}</td>
+		<td class="l"><button type = "button" ng-click = "add_cart(product)">+</button></td></tr>
+		</tbody>
+		</table>
+		</div>
+	<h5>MY CART</h5>
+	<table class = "table">
+	<thead>
+	<tr><th>PRODUCT</th>
+    <th>PRICE</th>
+	<th>REMOVE</th></tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat = "cart in carts" ng-init = "setTotals(cart)">
+	<td>{{cart.p_name}}</td>
+	<td>Rs.{{cart.p_price}}</td>
+	<td class="l"><button type = "button" ng-click = "remove_cart(cart)">-</button></td>
+	<td></td></tr>
+	<tr><td>TOTAL</td><td>Rs.{{total}}</td></tr>
+	</tbody>
+	</table>
+</div>
+<div style="height:40px;width:100%;background-color:gray;float:left;"></div>
+</body>	
+</html>

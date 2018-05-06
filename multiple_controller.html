@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>login</title>
+<center><h1>LOGIN</h1></center>
+<script src="angular.min.js"></script>
+
+<script>
+angular.module('myapp',[]).controller('myCtrl',function($scope,$rootScope){
+
+$scope.name='';
+$scope.password='';
+$scope.login=true;
+$rootScope.home=false;
+$scope.submit=function(){
+	if($scope.name == "admin" && $scope.password == "123"){
+		$scope.login=false;
+		$rootScope.home=true;
+		$rootScope.message = "logged in"
+	}
+}
+}).controller('ctrl2',function($scope){
+});
+</script>
+</head>
+<body ng-app="myapp" style="background-image:url('imag.jpg') ">
+<div ng-controller="myCtrl" ng-show="login">
+<form>
+<p>user name
+<input type="text" ng-model="name" placeholder="Enter user name" required maxlength="15"></p>
+  <br>
+  <p>password
+  <input type="password" id="psw" ng-model="password"></p>
+   <button ng-click="submit()">Login</button>
+  </div>
+  </form>
+ </div>
+ <div ng-controller="ctrl2" ng-show="home">
+ welcome to {{message}}
+  </div>
+  
+  </html>
+  

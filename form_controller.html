@@ -1,0 +1,79 @@
+<html>
+<head>
+<script src="angular.min.js"></script>
+<script language="javascript">
+angular.module("mod",[]).controller("con1",function($scope){
+$scope.fname= "karthi";
+$scope.lname= "welcome";
+$scope.getvalues=function(){
+$scope.confirm=true;
+//$scope.deptart=[];
+//$scope.dept='';
+alert($scope.department);
+return $scope.display="Firstname:" + $scope.Fname +"Lastname:" + $scope.Lname+
+"gender:"+$scope.gender +"department:"+$scope.department+"country:"+$scope.country + "Bday:"+$scope.Bday;
+}
+});
+
+{
+//alert("hai");
+//document.getElementById('display').innerHTML="Firstname:" + document.form.firstname.value;//
+}
+</script>
+
+
+</head>
+
+<body ng-app="mod" style="background-image:url('image.jpg')">
+<div ng-controller="con1">
+<style>
+body
+{
+	background-color:violet;
+</style>  
+<h3>First name:<br></h3>
+  <input type="text" ng-model="Fname" placeholder="Fname" required maxlength="15">
+  <br>
+  <h3>Last name:<br></h3>
+  <input type="text" ng-model="Lname"placeholder="Lname">
+<br>
+
+
+
+<h3>gender
+<h3><input type="radio" ng-model="gender" value="male" checked> male<br>
+  <input type="radio" ng-model="gender" value="female"> female<br>
+  <input type="radio" ng-model="gender" value="other"> other<br>
+
+
+<br><p style="color:MediumSeaGreen";>Department</p><br> 
+  <input type="checkbox" ng-model="department"  ng-true-value="'CSE'" ng-false-value="'no'">cse<br>	
+  <input type="checkbox" ng-model="department1" ng-value-true="'IT'"ng-value-false="'no'">IT<br>
+ <input type="checkbox" ng-model="department2"  ng-value-true="'Car'"ng-value-false="'no'">ECE<br>
+<br><br></h3>
+
+Enter a DOB
+  <input type="date" ng-model="bday" max="2020-12-31"><br>
+
+ 
+<h2><p style="color:lightgray";>country</p></h2> 
+ <select ng-model="country">
+    <option value="india">india</option>
+    <option value="england">england</option>
+    <option value="US">US</option>
+    <option value="Australia">Australia</option>
+  </select>
+  <br><br>
+ <button ng-click="getvalues()">OK</button>
+ <div ng-show="confirm">
+Confirm your details
+{{display}}
+</div>
+
+</div>
+
+</form>
+
+</body>
+</head>
+</html>

@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>login</title>
+<center><h1>LOGIN</h1></center>
+<script src="angular.min.js"></script>
+
+<script>
+var app= angular.module('myapp',[]);
+app.service('karthi',function(){
+this.login=function(x,y){
+if(x=="admin" && y=="admin"){
+return  true
+}
+else
+{
+return false
+}
+}});
+
+app.controller('myCtrl',function($scope,$rootScope,karthi){
+$scope.name='';
+$scope.password='';
+$rootScope.login=true;
+$rootScope.home=false;
+$scope.submit=function(){
+
+var check= karthi.login($scope.name,$scope.password)
+if (check== true){
+$rootScope.home=true;
+$rootScope.login=false;
+$rootScope.message="Home Page";
+
+}
+else
+{
+$rootScope.login=true;
+$rootScope.home=false;
+$rootScope.message="Home Page";
+}
+
+	}
+}).controller('ctrl2',function($scope){
+});
+app.controller('ctrl2',function($scope,$rootScope,karthi){
+$scope.name='';
+$scope.password='';
+$scope.logout=function(){
+$rootScope.login=true;
+$rootScope.home=false;
+}})
+</script>
+</head>
+<body ng-app="myapp" style="background-image:url('image.jpg') ">
+<div ng-controller="myCtrl" ng-show="login">
+<form>
+<p>user name
+<input type="text" ng-model="name" placeholder="Enter user name" required maxlength="15"></p>
+  <br>
+  <p>password
+  <input type="password" id="psw" ng-model="password"></p>
+   <button ng-click="submit()">Login</button>
+  </div>
+  </form>
+ </div>
+ <div ng-controller="ctrl2" ng-show="home">
+ welcome to {{message}}
+ <button ng-click="logout()">lagout</button>
+  </div>
+  
+  </html>
+  

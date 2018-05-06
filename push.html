@@ -1,0 +1,42 @@
+<html>
+<head>
+<script src="angular.min.js"></script>
+
+<script>
+ angular.module("mod",[]).controller("con1",function($scope){
+$scope.name= "karthi";
+$scope.message= "welcome";
+$scope.persons=[];
+
+$scope.add=function(){
+var user={
+fname:$scope.name,
+lname:$scope.name1
+};
+return $scope.persons.push(user);
+}
+
+});
+</script>
+</head>
+<body ng-app="mod" style="background-image:url('m_6.jpg')">
+<div ng-controller="con1">
+firstname: <input type="text" ng-model="name"><br><br>
+lastname: <input type="text" ng-model="name1"><br><br>
+
+<table border="2">
+<tr>
+<th>firstname</th>
+<th>lastname</th>
+</tr>
+<tr ng-repeat="p in persons">
+<td>{{p.fname}}</td>
+<td>{{p.lname}}</td>
+</tr>
+<tr>
+<button ng-click="add()">Add </button>
+</tr>
+</table>
+</div>
+</body>
+</html>
